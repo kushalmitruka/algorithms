@@ -6,14 +6,12 @@ class singleLinkedList(object):
 
 	_head = None
 
-	def __init__(self, head):
-		if isinstance(head, Node):
-			self.head = head
 	# Operations for a linked list
 	# 	insert an element
 	# 	remove an element
 	#	search for a element
 	#	move to a particular index
+
 
 	@property
 	def head(self):
@@ -60,15 +58,15 @@ class singleLinkedList(object):
 		new_node.next_node = node.next_node
 		node.next_node = new_node
 
-		return 'Inserted Element at index: {}'.format(index)	
+		return 'Inserted value at index: {}'.format(index)	
 
-	def remove_element_from_start(self):
+	def remove_value_from_start(self):
 		node = self.head
 		self.head = node.next_node
 
 		return 'Removed Node: {}'.format(node)
 
-	def remove_element_from_end(self):
+	def remove_value_from_end(self):
 		node = self.head
 		prev_node = None
 		while(node.next_node is not None):
@@ -79,10 +77,10 @@ class singleLinkedList(object):
 
 		return 'Removed Node: {}'.format(node)
 		
-	def remove_element_from_index(self, index):
+	def remove_value_from_index(self, index):
 		node = self.head
 		if index == 1:
-			return self.remove_element_from_start()
+			return self.remove_value_from_start()
 		for i in range(index-2):
 			node = node.next_node
 
@@ -92,7 +90,7 @@ class singleLinkedList(object):
 
 		return 'Removed Node: {}'.format(remove_node)
 
-	def search_element(self, value):
+	def search_value(self, value):
 		node = self.head
 		index = 1
 		while(node is not None):
@@ -100,6 +98,7 @@ class singleLinkedList(object):
 				return 'Value found at Index: {}'.format(index)
 			node = node.next_node
 			index += 1
+		return 'Value dosen;t exists'
 
 	def return_value_at_index(self, index):
 		node = self.head
@@ -123,6 +122,18 @@ class singleLinkedList(object):
 			index += 1
 
 		return index
+	
+	def __str__(self):
+		str_rep = ''
+		node = self.head
+		if self.head.value is not None:
+			str_rep += str(self.head)
+
+		while(node.next_node is not None):
+			node = node.next_node
+			str_rep += str(node)
+
+		return '{}'.format(str_rep)
 
 
 class Node(object):
